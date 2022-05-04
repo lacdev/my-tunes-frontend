@@ -4,16 +4,19 @@ import './index.css'
 import App from './App'
 import { store } from './app/store'
 import { Provider } from 'react-redux'
-// import { ThemeProvider } from '@mui/material'
 import { BrowserRouter } from 'react-router-dom'
+import { ThemeProvider } from '@mui/material'
+import { theme } from './theme/MuiTheme'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
