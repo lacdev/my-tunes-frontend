@@ -21,6 +21,14 @@ import { AdminUsers } from './views/AdminDashboard/AdminUsers'
 import { AdminSongs } from './views/AdminDashboard/AdminSongs'
 import { UserSongs } from './views/UserDashboard/UserSongs'
 import { AdminSettings } from './views/AdminDashboard/AdminSettings'
+import { AlbumDetail } from './views/Albums/AlbumDetail'
+import { SongDetail } from './views/Songs/SongDetail'
+import { Login } from './views/Login/Login'
+import { Signup } from './views/Signup/Signup'
+import { GenreDetail } from './views/Genres/GenreDetail'
+import { ArtistDetail } from './views/Artists/ArtistDetail'
+import { Playlists } from './views/Playlists/Playlists'
+import { PlaylistDetail } from './views/Playlists/PlaylistsDetail'
 
 function App() {
   return (
@@ -29,9 +37,17 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="artists" element={<Artists />} />
+        <Route path="artists/:artistId" element={<ArtistDetail />} />
         <Route path="genres" element={<Genres />} />
+        <Route path="genres/:genreId" element={<GenreDetail />} />
         <Route path="albums" element={<Albums />} />
+        <Route path="albums/:albumId" element={<AlbumDetail />} />
         <Route path="songs" element={<Songs />} />
+        <Route path="songs/:songId" element={<SongDetail />} />
+        <Route path="playlists" element={<Playlists />} />
+        <Route path="playlists/:playlistId" element={<PlaylistDetail />} />
+        <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
         <Route path="user" element={<User />}>
           <Route index element={<UserDashboard />} />
           <Route path="orders" element={<UserOrders />} />

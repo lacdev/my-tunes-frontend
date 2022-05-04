@@ -145,6 +145,23 @@ export const Navbar = () => {
             </Button>
           </NavLink>
           <NavLink
+            to="/playlists"
+            style={{
+              textDecoration: 'none',
+            }}
+          >
+            <Button
+              color="inherit"
+              sx={{
+                textDecoration: 'none',
+                color: 'white',
+                // textTransform: 'none',
+              }}
+            >
+              Playlists
+            </Button>
+          </NavLink>
+          <NavLink
             to="/user"
             style={{
               textDecoration: 'none',
@@ -176,6 +193,23 @@ export const Navbar = () => {
               }}
             >
               Admin
+            </Button>
+          </NavLink>
+          <NavLink
+            to="/login"
+            style={{
+              textDecoration: 'none',
+            }}
+          >
+            <Button
+              color="inherit"
+              sx={{
+                textDecoration: 'none',
+                color: 'white',
+                // textTransform: 'none',
+              }}
+            >
+              Login
             </Button>
           </NavLink>
         </Stack>
