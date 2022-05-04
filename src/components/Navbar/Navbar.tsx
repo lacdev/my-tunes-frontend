@@ -8,9 +8,13 @@ import {
   Menu,
   MenuItem,
 } from '@mui/material'
-import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings'
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic'
+import QueueMusicIcon from '@mui/icons-material/QueueMusic'
+import AlbumIcon from '@mui/icons-material/Album'
 import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
@@ -123,6 +127,7 @@ export const Navbar = () => {
                 color: 'white',
                 // textTransform: 'none',
               }}
+              startIcon={<AlbumIcon />}
             >
               Albums
             </Button>
@@ -140,6 +145,7 @@ export const Navbar = () => {
                 color: 'white',
                 // textTransform: 'none',
               }}
+              startIcon={<LibraryMusicIcon />}
             >
               Songs
             </Button>
@@ -157,8 +163,27 @@ export const Navbar = () => {
                 color: 'white',
                 // textTransform: 'none',
               }}
+              startIcon={<QueueMusicIcon />}
             >
               Playlists
+            </Button>
+          </NavLink>
+          <NavLink
+            to="/cart"
+            style={{
+              textDecoration: 'none',
+            }}
+          >
+            <Button
+              color="inherit"
+              sx={{
+                textDecoration: 'none',
+                color: 'white',
+                // textTransform: 'none',
+              }}
+              startIcon={<ShoppingCartIcon />}
+            >
+              Cart
             </Button>
           </NavLink>
           <NavLink
@@ -174,6 +199,7 @@ export const Navbar = () => {
                 color: 'white',
                 // textTransform: 'none',
               }}
+              startIcon={<AccountCircleIcon />}
             >
               Profile
             </Button>
@@ -191,6 +217,7 @@ export const Navbar = () => {
                 color: 'white',
                 // textTransform: 'none',
               }}
+              startIcon={<AdminPanelSettingsIcon />}
             >
               Admin
             </Button>

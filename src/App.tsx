@@ -29,6 +29,7 @@ import { GenreDetail } from './views/Genres/GenreDetail'
 import { ArtistDetail } from './views/Artists/ArtistDetail'
 import { Playlists } from './views/Playlists/Playlists'
 import { PlaylistDetail } from './views/Playlists/PlaylistsDetail'
+import { Cart } from './views/Cart/Cart'
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
         <Route path="playlists/:playlistId" element={<PlaylistDetail />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
+        <Route path="cart" element={<Cart />} />
         <Route path="user" element={<User />}>
           <Route index element={<UserDashboard />} />
           <Route path="orders" element={<UserOrders />} />

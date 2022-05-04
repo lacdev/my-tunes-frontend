@@ -1,4 +1,4 @@
-import { createTheme, colors } from '@mui/material'
+import { createTheme } from '@mui/material'
 
 export const theme = createTheme({
   typography: {
@@ -8,6 +8,7 @@ export const theme = createTheme({
   },
 })
 
+// colors
 /* 
 
 main
