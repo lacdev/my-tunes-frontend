@@ -9,6 +9,10 @@ import {
   MenuItem,
 } from '@mui/material'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import HomeIcon from '@mui/icons-material/Home'
+import GroupIcon from '@mui/icons-material/Group'
+import LoginIcon from '@mui/icons-material/Login'
+import MusicNoteIcon from '@mui/icons-material/MusicNote'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings'
@@ -42,7 +46,9 @@ export const Navbar = () => {
     <AppBar
       position="static"
       sx={{
-        background: 'linear-gradient(to right , #36EAEF, #6B0AC9)',
+        // background: 'linear-gradient(to right , #36EAEF, #6B0AC9)',
+        background:
+          'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);',
         color: '#2A2A2A',
       }}
     >
@@ -50,7 +56,6 @@ export const Navbar = () => {
         <IconButton size="large" edge="start" color="inherit" aria-label="logo">
           <LibraryMusicIcon />
         </IconButton>
-        {/* <Link to="/"> */}
         <Typography
           variant="h6"
           component="div"
@@ -60,7 +65,6 @@ export const Navbar = () => {
         >
           MyTunes Store
         </Typography>
-        {/* </Link> */}
 
         <Stack direction="row" spacing={2}>
           <NavLink
@@ -73,9 +77,11 @@ export const Navbar = () => {
               color="inherit"
               sx={{
                 textDecoration: 'none',
-                color: 'white',
+                // color: 'white',
+                color: '#212121',
                 // textTransform: 'none',
               }}
+              startIcon={<HomeIcon />}
             >
               Home
             </Button>
@@ -90,9 +96,10 @@ export const Navbar = () => {
               color="inherit"
               sx={{
                 textDecoration: 'none',
-                color: 'white',
+                color: '#212121',
                 // textTransform: 'none',
               }}
+              startIcon={<GroupIcon />}
             >
               Artists
             </Button>
@@ -107,9 +114,10 @@ export const Navbar = () => {
               color="inherit"
               sx={{
                 textDecoration: 'none',
-                color: 'white',
+                color: '#212121',
                 // textTransform: 'none',
               }}
+              startIcon={<MusicNoteIcon />}
             >
               Genres
             </Button>
@@ -124,7 +132,7 @@ export const Navbar = () => {
               color="inherit"
               sx={{
                 textDecoration: 'none',
-                color: 'white',
+                color: '#212121',
                 // textTransform: 'none',
               }}
               startIcon={<AlbumIcon />}
@@ -142,7 +150,7 @@ export const Navbar = () => {
               color="inherit"
               sx={{
                 textDecoration: 'none',
-                color: 'white',
+                color: '#212121',
                 // textTransform: 'none',
               }}
               startIcon={<LibraryMusicIcon />}
@@ -160,7 +168,7 @@ export const Navbar = () => {
               color="inherit"
               sx={{
                 textDecoration: 'none',
-                color: 'white',
+                color: '#212121',
                 // textTransform: 'none',
               }}
               startIcon={<QueueMusicIcon />}
@@ -178,7 +186,7 @@ export const Navbar = () => {
               color="inherit"
               sx={{
                 textDecoration: 'none',
-                color: 'white',
+                color: '#212121',
                 // textTransform: 'none',
               }}
               startIcon={<ShoppingCartIcon />}
@@ -196,7 +204,7 @@ export const Navbar = () => {
               color="inherit"
               sx={{
                 textDecoration: 'none',
-                color: 'white',
+                color: '#212121',
                 // textTransform: 'none',
               }}
               startIcon={<AccountCircleIcon />}
@@ -214,7 +222,7 @@ export const Navbar = () => {
               color="inherit"
               sx={{
                 textDecoration: 'none',
-                color: 'white',
+                color: '#212121',
                 // textTransform: 'none',
               }}
               startIcon={<AdminPanelSettingsIcon />}
@@ -232,9 +240,10 @@ export const Navbar = () => {
               color="inherit"
               sx={{
                 textDecoration: 'none',
-                color: 'white',
+                color: '#212121',
                 // textTransform: 'none',
               }}
+              startIcon={<LoginIcon />}
             >
               Login
             </Button>
