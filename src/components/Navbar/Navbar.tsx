@@ -245,7 +245,7 @@ export const Navbar = () => {
               }}
               startIcon={<LoginIcon />}
             >
-              Login
+              Sign In
             </Button>
           </NavLink>
         </Stack>
