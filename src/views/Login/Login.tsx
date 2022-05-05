@@ -36,7 +36,7 @@ export const Login = () => {
           Welcome Back
         </Typography>
         <Typography component="h3" variant="h6" mt={2}>
-          Please enter your details.
+          Sign In with your account details.
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField

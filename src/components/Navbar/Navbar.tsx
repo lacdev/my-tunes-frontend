@@ -7,6 +7,7 @@ import {
   Button,
   Menu,
   MenuItem,
+  Link,
 } from '@mui/material'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import HomeIcon from '@mui/icons-material/Home'
@@ -20,7 +21,7 @@ import LibraryMusicIcon from '@mui/icons-material/LibraryMusic'
 import QueueMusicIcon from '@mui/icons-material/QueueMusic'
 import AlbumIcon from '@mui/icons-material/Album'
 import React, { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -47,15 +48,23 @@ export const Navbar = () => {
       position="sticky"
       sx={{
         // background: 'linear-gradient(to right , #36EAEF, #6B0AC9)',
-        background:
-          'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);',
+        // background: 'transparent',
+        // background: 'pink',
+        background: 'rgba(255, 255, 255, 0.192)',
+        // background:
+        //   'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);',
         color: '#2A2A2A',
+        // color: 'gray',
+        backdropFilter: 'blur(20px)',
       }}
     >
       <Toolbar>
-        <IconButton size="large" edge="start" color="inherit" aria-label="logo">
-          <LibraryMusicIcon />
-        </IconButton>
+        <NavLink to="/">
+          <IconButton size="large" edge="start" aria-label="logo">
+            <LibraryMusicIcon />
+          </IconButton>
+        </NavLink>
+
         <Typography
           variant="h6"
           component="div"
@@ -63,7 +72,15 @@ export const Navbar = () => {
             flexGrow: 1,
           }}
         >
-          MyTunes Store
+          <NavLink
+            to="/"
+            style={{
+              textDecoration: 'none',
+              color: '#2A2A2A',
+            }}
+          >
+            MyTunes
+          </NavLink>
         </Typography>
 
         <Stack direction="row" spacing={2}>

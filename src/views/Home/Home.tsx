@@ -221,7 +221,7 @@ export const Home = () => {
           }}
         >
           <Grid item xs={12}>
-            <h2>House Top Releases</h2>
+            <h2>Acid Top Releases</h2>
           </Grid>
           <Grid
             item
@@ -288,7 +288,7 @@ export const Home = () => {
           }}
         >
           <Grid item xs={12}>
-            <h2>House Top Releases</h2>
+            <h2>Alternative Top Releases</h2>
           </Grid>
           <Grid
             item
