@@ -22,10 +22,11 @@ import QueueMusicIcon from '@mui/icons-material/QueueMusic'
 import AlbumIcon from '@mui/icons-material/Album'
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { CSSProperties } from '@emotion/serialize'
 
 export const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-
+  const [active, setActive] = useState<boolean>(false)
   const open = Boolean(anchorEl)
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -36,12 +37,42 @@ export const Navbar = () => {
     setAnchorEl(null)
   }
 
+  let activeStyle = {
+    fontWeight: 'bold',
+    textDecoration: 'none',
+    color: 'black',
+  }
+
+  let notActiveStyle = {
+    textDecoration: 'none',
+    color: 'black',
+  }
+
+  // let activeClassName = 'underline'
+
   // const navLinkStyles = ({ isActive: any }) => {
   //   return {
   //     fontWeight: isActive ? 'bold' : 'normal',
   //     textDecoration: isActive ? 'none' : 'underline',
   //   }
   // }
+
+  //  style={navLinkStyles}
+
+  // const navLinkStyles = ({ isActive: any }) => {
+  //   return {
+  //     fontWeight: isActive ? 'bold' : 'normal',
+  //     textDecoration: isActive ? 'none' : 'underline',
+  //   }
+  // }
+
+  /*
+  
+  style={({ isActive }) =>
+              isActive ? activeStyle : undefined
+            }
+  
+  */
 
   return (
     <AppBar
@@ -58,9 +89,22 @@ export const Navbar = () => {
         backdropFilter: 'blur(20px)',
       }}
     >
-      <Toolbar>
+      <Toolbar
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
         <NavLink to="/">
-          <IconButton size="large" edge="start" aria-label="logo">
+          <IconButton
+            size="large"
+            edge="start"
+            aria-label="logo"
+            sx={{
+              color: 'black',
+            }}
+          >
             <LibraryMusicIcon />
           </IconButton>
         </NavLink>
@@ -76,7 +120,7 @@ export const Navbar = () => {
             to="/"
             style={{
               textDecoration: 'none',
-              color: '#2A2A2A',
+              color: 'black',
             }}
           >
             MyTunes
@@ -86,184 +130,63 @@ export const Navbar = () => {
         <Stack direction="row" spacing={2}>
           <NavLink
             to="/"
-            style={{
-              textDecoration: 'none',
-            }}
+            style={({ isActive }) => (isActive ? activeStyle : notActiveStyle)}
           >
-            <Button
-              color="inherit"
-              sx={{
-                textDecoration: 'none',
-                // color: 'white',
-                color: '#212121',
-                // textTransform: 'none',
-              }}
-              startIcon={<HomeIcon />}
-            >
-              Home
-            </Button>
+            Home
           </NavLink>
           <NavLink
-            to="/artists"
-            style={{
-              textDecoration: 'none',
-            }}
+            to="artists"
+            style={({ isActive }) => (isActive ? activeStyle : notActiveStyle)}
           >
-            <Button
-              color="inherit"
-              sx={{
-                textDecoration: 'none',
-                color: '#212121',
-                // textTransform: 'none',
-              }}
-              startIcon={<GroupIcon />}
-            >
-              Artists
-            </Button>
+            Artists
           </NavLink>
           <NavLink
-            to="/genres"
-            style={{
-              textDecoration: 'none',
-            }}
+            to="genres"
+            style={({ isActive }) => (isActive ? activeStyle : notActiveStyle)}
           >
-            <Button
-              color="inherit"
-              sx={{
-                textDecoration: 'none',
-                color: '#212121',
-                // textTransform: 'none',
-              }}
-              startIcon={<MusicNoteIcon />}
-            >
-              Genres
-            </Button>
+            Genres
           </NavLink>
           <NavLink
-            to="/albums"
-            style={{
-              textDecoration: 'none',
-            }}
+            to="albums"
+            style={({ isActive }) => (isActive ? activeStyle : notActiveStyle)}
           >
-            <Button
-              color="inherit"
-              sx={{
-                textDecoration: 'none',
-                color: '#212121',
-                // textTransform: 'none',
-              }}
-              startIcon={<AlbumIcon />}
-            >
-              Albums
-            </Button>
+            Albums
           </NavLink>
           <NavLink
-            to="/songs"
-            style={{
-              textDecoration: 'none',
-            }}
+            to="playlists"
+            style={({ isActive }) => (isActive ? activeStyle : notActiveStyle)}
           >
-            <Button
-              color="inherit"
-              sx={{
-                textDecoration: 'none',
-                color: '#212121',
-                // textTransform: 'none',
-              }}
-              startIcon={<LibraryMusicIcon />}
-            >
-              Songs
-            </Button>
+            Playlists
           </NavLink>
           <NavLink
-            to="/playlists"
-            style={{
-              textDecoration: 'none',
-            }}
+            to="songs"
+            style={({ isActive }) => (isActive ? activeStyle : notActiveStyle)}
           >
-            <Button
-              color="inherit"
-              sx={{
-                textDecoration: 'none',
-                color: '#212121',
-                // textTransform: 'none',
-              }}
-              startIcon={<QueueMusicIcon />}
-            >
-              Playlists
-            </Button>
+            Songs
           </NavLink>
           <NavLink
-            to="/cart"
-            style={{
-              textDecoration: 'none',
-            }}
+            to="user"
+            style={({ isActive }) => (isActive ? activeStyle : notActiveStyle)}
           >
-            <Button
-              color="inherit"
-              sx={{
-                textDecoration: 'none',
-                color: '#212121',
-                // textTransform: 'none',
-              }}
-              startIcon={<ShoppingCartIcon />}
-            >
-              Cart
-            </Button>
+            Profile
           </NavLink>
           <NavLink
-            to="/user"
-            style={{
-              textDecoration: 'none',
-            }}
+            to="admin"
+            style={({ isActive }) => (isActive ? activeStyle : notActiveStyle)}
           >
-            <Button
-              color="inherit"
-              sx={{
-                textDecoration: 'none',
-                color: '#212121',
-                // textTransform: 'none',
-              }}
-              startIcon={<AccountCircleIcon />}
-            >
-              Profile
-            </Button>
+            Admin
           </NavLink>
           <NavLink
-            to="/admin"
-            style={{
-              textDecoration: 'none',
-            }}
+            to="cart"
+            style={({ isActive }) => (isActive ? activeStyle : notActiveStyle)}
           >
-            <Button
-              color="inherit"
-              sx={{
-                textDecoration: 'none',
-                color: '#212121',
-                // textTransform: 'none',
-              }}
-              startIcon={<AdminPanelSettingsIcon />}
-            >
-              Admin
-            </Button>
+            Cart
           </NavLink>
           <NavLink
-            to="/login"
-            style={{
-              textDecoration: 'none',
-            }}
+            to="login"
+            style={({ isActive }) => (isActive ? activeStyle : notActiveStyle)}
           >
-            <Button
-              color="inherit"
-              sx={{
-                textDecoration: 'none',
-                color: '#212121',
-                // textTransform: 'none',
-              }}
-              startIcon={<LoginIcon />}
-            >
-              Sign In
-            </Button>
+            SignIn
           </NavLink>
         </Stack>
         {/* <Button
@@ -332,13 +255,3 @@ export const Navbar = () => {
 //     </nav>
 //   )
 // }
-
-// // const navLinkStyles = ({ isActive: any }) => {
-// //   return {
-// //     fontWeight: isActive ? 'bold' : 'normal',
-// //     textDecoration: isActive ? 'none' : 'underline',
-// //   }
-// // }
-
-// // style={navLinkStyles}
-// // style={navLinkStyles}
