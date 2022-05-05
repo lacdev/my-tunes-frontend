@@ -9,6 +9,7 @@ import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
+import BackGroundWave from '../../assets/Backgrounds/wave.svg'
 
 export const Login = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -21,10 +22,18 @@ export const Login = () => {
   }
 
   return (
-    <Container component="main" maxWidth="sm">
+    <Container
+      component="main"
+      maxWidth="sm"
+      sx={
+        {
+          // backgroundImage: `url(${BackGroundWave})`,
+          // backgroundRepeat: 'no-repeat',
+        }
+      }
+    >
       <Box
         sx={{
-          marginTop: 8,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',

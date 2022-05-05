@@ -77,6 +77,7 @@ export const Navbar = () => {
   return (
     <AppBar
       position="sticky"
+      elevation={1}
       sx={{
         // background: 'linear-gradient(to right , #36EAEF, #6B0AC9)',
         // background: 'transparent',
@@ -87,6 +88,7 @@ export const Navbar = () => {
         color: '#2A2A2A',
         // color: 'gray',
         backdropFilter: 'blur(20px)',
+        borderRadius: '25px',
       }}
     >
       <Toolbar
