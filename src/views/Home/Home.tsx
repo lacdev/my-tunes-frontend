@@ -16,7 +16,7 @@ export const Home = () => {
           background: 'gray',
         }}
       >
-        <h2>Featured Releases 1</h2>
+        <h2>Featured Playlist</h2>
       </Grid>
       <Grid
         container
@@ -35,7 +35,7 @@ export const Home = () => {
             background: 'blue',
           }}
         >
-          <h2>Featured Releases 2</h2>
+          <h2>Featured Playlist 2</h2>
         </Grid>
         <Grid
           item
@@ -45,7 +45,7 @@ export const Home = () => {
             background: 'purple',
           }}
         >
-          <h2>Featured Releases 3</h2>
+          <h2>Featured Playlist 3</h2>
         </Grid>
         <Grid
           item
@@ -55,7 +55,7 @@ export const Home = () => {
             background: 'pink',
           }}
         >
-          <h2>Featured Releases 4</h2>
+          <h2>Featured Playlist 4</h2>
         </Grid>
       </Grid>
       <Grid
@@ -87,6 +87,16 @@ export const Home = () => {
       >
         <Grid container item xs={8}>
           <Grid
+            item
+            xs={12}
+            sx={{
+              height: 'auto',
+              background: 'gray',
+            }}
+          >
+            <h2>This week's best release ever</h2>
+          </Grid>
+          <Grid
             container
             item
             xs={12}
@@ -97,10 +107,20 @@ export const Home = () => {
           >
             <Grid
               item
-              xs={8}
+              xs={4}
               sx={{
                 height: 'auto',
-                background: 'gray',
+                background: 'yellow',
+              }}
+            >
+              <h2>Top week album item</h2>
+            </Grid>
+            <Grid
+              item
+              xs={4}
+              sx={{
+                height: 'auto',
+                background: 'blue',
               }}
             >
               <h2>Top week album item</h2>
@@ -146,16 +166,6 @@ export const Home = () => {
               <h2>Top week album item</h2>
             </Grid>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            sx={{
-              height: 'auto',
-              background: 'gray',
-            }}
-          >
-            <h2>This week's best releases</h2>
-          </Grid>
         </Grid>
         <Grid
           item
@@ -175,7 +185,7 @@ export const Home = () => {
         mt={2}
         xs={12}
         sx={{
-          height: '300px',
+          height: '400px',
           background: 'orange',
           display: 'flex',
           justifyContent: 'center',
