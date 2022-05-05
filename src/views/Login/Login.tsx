@@ -28,6 +28,8 @@ export const Login = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '90vh',
         }}
       >
         <Typography component="h2" variant="h3">

@@ -44,7 +44,7 @@ export const Navbar = () => {
 
   return (
     <AppBar
-      position="static"
+      position="sticky"
       sx={{
         // background: 'linear-gradient(to right , #36EAEF, #6B0AC9)',
         background:
