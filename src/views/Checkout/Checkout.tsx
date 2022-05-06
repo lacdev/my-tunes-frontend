@@ -6,7 +6,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
 
-export const Genres = () => {
+export const Checkout = () => {
   const navigate = useNavigate()
   //   onClick={() => navigate('order-summary')}
   // {replace: true} to replace the history in the stack
@@ -22,7 +22,7 @@ export const Genres = () => {
         }}
       >
         <Typography component="h2" variant="h3">
-          Genres Page
+          Checkout Page
         </Typography>
       </Box>
     </Container>

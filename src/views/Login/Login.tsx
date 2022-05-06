@@ -22,16 +22,7 @@ export const Login = () => {
   }
 
   return (
-    <Container
-      component="main"
-      maxWidth="sm"
-      sx={
-        {
-          // backgroundImage: `url(${BackGroundWave})`,
-          // backgroundRepeat: 'no-repeat',
-        }
-      }
-    >
+    <Container component="main" maxWidth="sm">
       <Box
         sx={{
           display: 'flex',

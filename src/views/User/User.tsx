@@ -1,14 +1,34 @@
 import { useNavigate, Outlet } from 'react-router-dom'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import Grid from '@mui/material/Grid'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import Container from '@mui/material/Container'
+import { UserDashboard } from '../UserDashboard/UserDashboard'
 
 export const User = () => {
   const navigate = useNavigate()
   //   onClick={() => navigate('order-summary')}
   // {replace: true} to replace the history in the stack
+
   return (
-    <>
-      <h2>User Profile Page</h2>
-      <Outlet />
-      {/* <button>Place Order</button> */}
-    </>
+    <Container component="main" maxWidth="sm">
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '100vh',
+        }}
+      >
+        <Typography component="h2" variant="h3">
+          User Profile Page
+        </Typography>
+        <UserDashboard />
+        <Outlet />
+      </Box>
+    </Container>
   )
 }

@@ -1,14 +1,32 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, useLocation, NavLink } from 'react-router-dom'
+import Button from '@mui/material/Button'
+import TextField from '@mui/material/TextField'
+import Grid from '@mui/material/Grid'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import Container from '@mui/material/Container'
 
 export const ArtistDetail = () => {
   const navigate = useNavigate()
   //   onClick={() => navigate('order-summary')}
   // {replace: true} to replace the history in the stack
   const { artistId } = useParams()
+
   return (
-    <>
-      <h2>Details about artists {artistId}</h2>
-      {/* <button>Place Order</button> */}
-    </>
+    <Container component="main" maxWidth="sm">
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          minHeight: '90vh',
+        }}
+      >
+        <Typography component="h2" variant="h3">
+          Artist Detail {artistId} Page
+        </Typography>
+      </Box>
+    </Container>
   )
 }
