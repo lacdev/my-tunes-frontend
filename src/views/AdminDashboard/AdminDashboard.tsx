@@ -25,7 +25,6 @@ export const AdminDashboard = () => {
       <h2>Admin Default Component</h2>
       <h2>Stats Maybe? </h2>
       <Outlet />
-      {/* <button>Place Order</button> */}
     </>
   )
 }

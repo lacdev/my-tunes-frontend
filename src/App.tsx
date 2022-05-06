@@ -52,7 +52,7 @@ function App() {
         <Route path="signup" element={<Signup />} />
         <Route path="cart" element={<Cart />} />
         <Route path="user" element={<User />}>
-          {/* <Route index element={<UserDashboard />} /> */}
+          <Route index element={<UserDashboard />} />
           <Route path="orders" element={<UserOrders />} />
           <Route path="songs" element={<UserSongs />} />
           <Route path="playlists" element={<UserPlaylists />} />

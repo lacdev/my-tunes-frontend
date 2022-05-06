@@ -33,32 +33,21 @@ export const Admin = () => {
   // {replace: true} to replace the history in the stack
 
   let activeStyle = {
-    fontWeight: 'bold',
+    fontWeight: '900',
     textDecoration: 'none',
-    color: 'black',
+    color: 'purple',
   }
 
   let notActiveStyle = {
     textDecoration: 'none',
     color: 'black',
+    fontWeight: '300',
   }
 
   return (
     <>
       <Grid xs={12} container maxWidth="xl" my={2}>
         <Grid container item xs={3} direction="column">
-          {/* <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              // alignItems: 'center',
-              // justifyContent: 'center',
-              minHeight: '100vh',
-              // padding: '8px',
-              // border: '1px solid red',
-            }}
-            
-          > */}
           <Paper
             sx={{
               width: '100%',
@@ -67,18 +56,18 @@ export const Admin = () => {
               flexDirection: 'column',
               // backgroundColor: '#efefef',
               backgroundColor: 'white',
-              borderRadius: '25px',
+              borderRadius: '20px',
             }}
           >
             <List>
               {/* <Divider /> */}
               <NavLink
-                to="/admin/orders"
+                to="orders"
                 style={({ isActive }) =>
                   isActive ? activeStyle : notActiveStyle
                 }
               >
-                <ListItem disablePadding>
+                <ListItem>
                   <ListItemButton>
                     <ListItemIcon>
                       <ListItemAvatar>
@@ -87,6 +76,7 @@ export const Admin = () => {
                         </Avatar>
                       </ListItemAvatar>
                     </ListItemIcon>
+
                     <ListItemText
                       primary="Orders"
                       // secondary="Show all orders"
@@ -96,12 +86,12 @@ export const Admin = () => {
               </NavLink>
               <Divider />
               <NavLink
-                to="/admin/users"
+                to="users"
                 style={({ isActive }) =>
                   isActive ? activeStyle : notActiveStyle
                 }
               >
-                <ListItem disablePadding>
+                <ListItem>
                   <ListItemButton>
                     <ListItemIcon>
                       <ListItemAvatar>
@@ -116,12 +106,12 @@ export const Admin = () => {
               </NavLink>
               <Divider />
               <NavLink
-                to="/admin/albums"
+                to="albums"
                 style={({ isActive }) =>
                   isActive ? activeStyle : notActiveStyle
                 }
               >
-                <ListItem disablePadding>
+                <ListItem>
                   <ListItemButton>
                     <ListItemIcon>
                       <ListItemAvatar>
@@ -136,12 +126,12 @@ export const Admin = () => {
               </NavLink>
               <Divider />
               <NavLink
-                to="/admin/songs"
+                to="songs"
                 style={({ isActive }) =>
                   isActive ? activeStyle : notActiveStyle
                 }
               >
-                <ListItem disablePadding>
+                <ListItem>
                   <ListItemButton>
                     <ListItemIcon>
                       <ListItemAvatar>
@@ -156,12 +146,12 @@ export const Admin = () => {
               </NavLink>
               <Divider />
               <NavLink
-                to="/admin/genres"
+                to="genres"
                 style={({ isActive }) =>
                   isActive ? activeStyle : notActiveStyle
                 }
               >
-                <ListItem disablePadding>
+                <ListItem>
                   <ListItemButton>
                     <ListItemIcon>
                       <ListItemAvatar>
@@ -176,12 +166,12 @@ export const Admin = () => {
               </NavLink>
               <Divider />
               <NavLink
-                to="/admin/settings"
+                to="settings"
                 style={({ isActive }) =>
                   isActive ? activeStyle : notActiveStyle
                 }
               >
-                <ListItem disablePadding>
+                <ListItem>
                   <ListItemButton>
                     <ListItemIcon>
                       <ListItemAvatar>
@@ -197,7 +187,6 @@ export const Admin = () => {
               <Divider />
             </List>
           </Paper>
-          {/* </Box> */}
         </Grid>
         <Grid container item xs={9}>
           <Grid item xs={12}>
@@ -209,15 +198,10 @@ export const Admin = () => {
                 justifyContent: 'center',
                 minHeight: '100vh',
                 background: 'white',
-                borderRadius: '25px',
+                borderRadius: '20px',
                 marginLeft: '16px',
-
-                // border: '1px  solid red',
               }}
             >
-              {/* <Typography component="h2" variant="h3">
-                Admin Profile Outlet
-              </Typography> */}
               <Outlet />
             </Paper>
           </Grid>

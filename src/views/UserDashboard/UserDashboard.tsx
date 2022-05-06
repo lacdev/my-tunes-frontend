@@ -6,9 +6,9 @@ export const UserDashboard = () => {
   // {replace: true} to replace the history in the stack
   return (
     <>
-      <h2>User Dashboard Left Component</h2>
+      <h2>User Default Component</h2>
+      <h2>Stats Maybe? </h2>
       <Outlet />
-      {/* <button>Place Order</button> */}
     </>
   )
 }

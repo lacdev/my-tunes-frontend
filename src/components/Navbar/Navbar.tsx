@@ -83,13 +83,13 @@ export const Navbar = () => {
         // background: 'transparent',
         // background: 'pink',
         // background: 'white',
-        // background: 'rgba(255, 255, 255, 0.192)',
-        background:
-          'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);',
+        background: 'rgba(255, 255, 255, 0.192)',
+        // background:
+        //   'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);',
         color: '#2A2A2A',
         // color: 'gray',
         backdropFilter: 'blur(20px)',
-        borderRadius: '25px',
+        borderRadius: '20px',
       }}
     >
       <Toolbar
@@ -189,7 +189,29 @@ export const Navbar = () => {
             to="login"
             style={({ isActive }) => (isActive ? activeStyle : notActiveStyle)}
           >
-            SignIn
+            <Button
+              sx={{
+                backgroundImage:
+                  'linear-gradient(to right, #00c6ff 0%, #0072ff  51%, #00c6ff  100%)',
+                // margin: '10px',
+                padding: '8px 32px',
+                textAlign: 'center',
+                // textTransform: 'lowercase',
+                transition: '0.5s',
+                backgroundSize: '200% auto',
+                color: 'white',
+                boxShadow: '0 0 20px #eee',
+                borderRadius: '20px',
+                // display: 'block',
+                '&:hover': {
+                  backgroundPosition: 'right center',
+                  color: '#fff',
+                  textDecoration: 'none',
+                },
+              }}
+            >
+              Sign In
+            </Button>
           </NavLink>
         </Stack>
         {/* <Button
