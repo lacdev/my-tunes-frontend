@@ -89,7 +89,7 @@ export const Navbar = () => {
         color: '#2A2A2A',
         // color: 'gray',
         backdropFilter: 'blur(20px)',
-        borderRadius: '20px',
+        borderRadius: '16px',
       }}
     >
       <Toolbar
@@ -201,7 +201,7 @@ export const Navbar = () => {
                 backgroundSize: '200% auto',
                 color: 'white',
                 boxShadow: '0 0 20px #eee',
-                borderRadius: '20px',
+                borderRadius: '16px',
                 // display: 'block',
                 '&:hover': {
                   backgroundPosition: 'right center',

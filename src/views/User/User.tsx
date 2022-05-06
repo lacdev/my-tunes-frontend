@@ -56,8 +56,9 @@ export const User = () => {
               flexDirection: 'column',
               // backgroundColor: '#efefef',
               backgroundColor: 'white',
-              borderRadius: '20px',
+              borderRadius: '16px',
             }}
+            elevation={2}
           >
             <List>
               {/* <Divider /> */}
@@ -159,9 +160,10 @@ export const User = () => {
                 justifyContent: 'center',
                 minHeight: '100vh',
                 background: 'white',
-                borderRadius: '20px',
+                borderRadius: '16px',
                 marginLeft: '16px',
               }}
+              elevation={2}
             >
               <Outlet />
             </Paper>

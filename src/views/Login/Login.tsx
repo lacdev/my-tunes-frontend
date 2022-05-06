@@ -77,7 +77,7 @@ export const Login = () => {
               backgroundSize: '200% auto',
               color: 'white',
               boxShadow: '0 0 20px #eee',
-              borderRadius: '20px',
+              borderRadius: '16px',
               display: 'block',
               '&:hover': {
                 backgroundPosition: 'right center',
