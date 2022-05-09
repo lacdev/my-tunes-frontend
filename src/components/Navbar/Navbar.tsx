@@ -95,47 +95,65 @@ export const Navbar = () => {
       <Toolbar
         sx={{
           display: 'flex',
-          justifyContent: 'space-between',
+          justifyContent: 'space-around',
           alignItems: 'center',
         }}
       >
-        <NavLink to="/">
-          <IconButton
-            size="large"
-            edge="start"
-            aria-label="logo"
-            sx={{
-              color: 'black',
-            }}
-          >
-            <LibraryMusicIcon />
-          </IconButton>
-        </NavLink>
-
-        <Typography
-          variant="h6"
-          component="div"
-          sx={{
-            flexGrow: 1,
-          }}
+        <Stack
+          direction="row"
+          spacing={2}
+          justifyContent="center"
+          alignItems="center"
         >
-          <NavLink
-            to="/"
-            style={{
-              textDecoration: 'none',
-              color: 'black',
+          <NavLink to="/">
+            <IconButton
+              size="large"
+              edge="start"
+              aria-label="logo"
+              sx={{
+                color: 'black',
+              }}
+            >
+              <LibraryMusicIcon />
+            </IconButton>
+          </NavLink>
+
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{
+              flexGrow: 1,
             }}
           >
-            MyTunes
-          </NavLink>
-        </Typography>
+            <NavLink
+              to="/"
+              style={{
+                textDecoration: 'none',
+                color: 'black',
+              }}
+            >
+              MyTunes
+            </NavLink>
+          </Typography>
+        </Stack>
 
-        <Stack direction="row" spacing={2}>
+        <Stack
+          direction="row"
+          spacing={2}
+          justifyContent="center"
+          alignItems="center"
+        >
           <NavLink
             to="/"
             style={({ isActive }) => (isActive ? activeStyle : notActiveStyle)}
           >
             Home
+          </NavLink>
+          <NavLink
+            to="search"
+            style={({ isActive }) => (isActive ? activeStyle : notActiveStyle)}
+          >
+            Search
           </NavLink>
           <NavLink
             to="artists"
@@ -185,6 +203,8 @@ export const Navbar = () => {
           >
             Cart
           </NavLink>
+        </Stack>
+        <Stack>
           <NavLink
             to="login"
             style={({ isActive }) => (isActive ? activeStyle : notActiveStyle)}

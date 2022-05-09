@@ -46,8 +46,8 @@ export const Admin = () => {
 
   return (
     <>
-      <Grid xs={12} container maxWidth="xl" my={2}>
-        <Grid container item xs={3} direction="column">
+      <Grid container maxWidth="xl" my={2}>
+        <Grid container item={true} xs={3} direction="column">
           <Paper
             sx={{
               width: '100%',

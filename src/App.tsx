@@ -31,6 +31,7 @@ import { Playlists } from './views/Playlists/Playlists'
 import { PlaylistDetail } from './views/Playlists/PlaylistsDetail'
 import { Cart } from './views/Cart/Cart'
 import { Footer } from './components/Footer/Footer'
+import { Search } from './views/Search/Search'
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="search" element={<Search />} />
         <Route path="artists" element={<Artists />} />
         <Route path="artists/:artistId" element={<ArtistDetail />} />
         <Route path="genres" element={<Genres />} />
