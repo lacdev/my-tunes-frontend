@@ -107,6 +107,27 @@ export const Admin = () => {
               </NavLink>
               <Divider />
               <NavLink
+                to="artists"
+                style={({ isActive }) =>
+                  isActive ? activeStyle : notActiveStyle
+                }
+              >
+                <ListItem>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <ListItemAvatar>
+                        <Avatar>
+                          <PeopleIcon />
+                        </Avatar>
+                      </ListItemAvatar>
+                    </ListItemIcon>
+                    <ListItemText primary="Artists" />
+                  </ListItemButton>
+                </ListItem>
+              </NavLink>
+              <Divider />
+
+              <NavLink
                 to="albums"
                 style={({ isActive }) =>
                   isActive ? activeStyle : notActiveStyle
