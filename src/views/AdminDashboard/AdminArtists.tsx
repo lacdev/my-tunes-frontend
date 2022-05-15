@@ -58,7 +58,7 @@ export const AdminArtists = () => {
     console.log(file)
     if (!file) return
 
-    const storageRef = ref(storage, `audio/full/${file.name}`)
+    const storageRef = ref(storage, `images/artists/${file.name}`)
     const uploadTask = uploadBytesResumable(storageRef, file)
 
     uploadTask.on(
@@ -86,6 +86,7 @@ export const AdminArtists = () => {
   return (
     <>
       <h2>Admin Artists Page</h2>
+
       <form onSubmit={handleSubmit} className="form">
         <TextField
           type="file"

@@ -9,14 +9,12 @@ import { ThemeProvider } from '@mui/material'
 import { theme } from './theme/MuiTheme'
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <ThemeProvider theme={theme}>
-      <Provider store={store}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </Provider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ThemeProvider>
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 )
