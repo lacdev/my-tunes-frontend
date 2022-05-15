@@ -1,12 +1,12 @@
 import { format, formatDistance } from 'date-fns'
-import { es } from 'date-fns/locale'
+// import { es } from 'date-fns/locale'
 const formatDate = (date: Date) => {
   try {
     const result = new Date(date)
     return formatDistance(result, new Date(), {
       addSuffix: true,
       includeSeconds: true,
-      locale: es,
+      // locale: es,
     })
   } catch (error) {
     console.log(error)

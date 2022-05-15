@@ -2,8 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState, forwardRef } from 'react'
 import { storage } from '../../utils/firebase'
 import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage'
-import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
-import 'react-h5-audio-player/lib/styles.css'
+
 import {
   Typography,
   Stack,
@@ -130,16 +129,7 @@ export const AdminArtists = () => {
             }}
           >
             {/* <button onClick={start}>Play</button> */}
-            <AudioPlayer
-              style={{
-                backgroundColor: 'transparent',
-              }}
-              header="Legowelt - Santiago Arp Chile Track"
-              layout="horizontal"
-              src={imgUrl}
-              onPlay={(e) => console.log('onPlay')}
-              // other props here
-            />
+
             <Snackbar
               anchorOrigin={{
                 vertical: 'bottom',

@@ -1,6 +1,14 @@
 import { useNavigate, useLocation, NavLink } from 'react-router-dom'
 import Grid from '@mui/material/Grid'
-import { Box, Typography, Button, Paper } from '@mui/material'
+import {
+  Box,
+  Typography,
+  Button,
+  Paper,
+  Stack,
+  CircularProgress,
+  LinearProgress,
+} from '@mui/material'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { selectAlbums } from '../../features/albumsSlice'
 import { fetchAlbums } from '../../services/Album.services'
@@ -40,7 +48,11 @@ export const Albums = () => {
         </Typography>
       </Grid>
 
-      {albums.loading && <div>Loading...</div>}
+      {albums.loading && (
+        <div>
+          <CircularProgress color="primary" />
+        </div>
+      )}
       {!albums.loading && albums.error ? (
         <div>Error: {albums.error}</div>
       ) : null}

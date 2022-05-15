@@ -1,59 +1,85 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../app/store'
-// import { fetchArtist } from '../services/Artist.service'
+import { fetchSong } from '../services/Song.services'
 
-export interface PlayerInitialState {
-  artist: string
-  songName: string
-  songUrl: string
-  songImage: string
-  //   isPaused: boolean
+export interface Artist {
+  _id: string
+  name: string
+  country: string
+  image: string
+  createdAt: Date
+  updatedAt: Date
 }
 
-// export interface ArtistsInitialState {
-//   loading: boolean
-//   artist: Artist | null
-//   error: string
-// }
-
-const initialState: PlayerInitialState = {
-  artist: '',
-  songName: '',
-  songUrl: '',
-  songImage: '',
+export interface Genre {
+  _id: string
+  name: string
+  createdAt: Date
+  updatedAt: Date
 }
 
-export const playerSlice = createSlice({
-  name: 'player',
+export interface Album {
+  _id: string
+  title: string
+  releaseDate: Date
+  image: string
+  artist: Artist
+  genre: Genre
+  songs: Song[]
+  createdAt: Date
+  updatedAt: Date
+}
+export interface Song {
+  _id: string
+  title: string
+  artist: Artist
+  releaseDate: Date
+  album?: Album
+  genre: Genre
+  previewFile?: string
+  fullFile?: string
+  price?: number
+  trackNumber: number
+}
+
+export interface SongInitialState {
+  loading: boolean
+  song: Song | null
+  error: string
+}
+
+const initialState: SongInitialState = {
+  loading: false,
+  song: null,
+  error: '',
+}
+
+export const songSlice = createSlice({
+  name: 'song',
   initialState,
-  reducers: {
-    setSong: (state, action: PayloadAction<string>) => {
-      state.songUrl = action.payload
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchSong.pending, (state) => {
+      state.loading = true
+    })
+
+    builder.addCase(
+      fetchSong.fulfilled,
+      (state, action: PayloadAction<Song>) => {
+        state.loading = false
+        state.song = action.payload
+        state.error = ''
+      }
+    )
+
+    builder.addCase(fetchSong.rejected, (state, action) => {
+      state.loading = false
+      state.song = null
+      state.error = action.error.message || 'Something went wrong'
+    })
   },
 })
 
-export const selectPlayer = (state: RootState) => state.player
+export const selectSong = (state: RootState) => state.song
 
-export default playerSlice.reducer
-
-//   extraReducers: (builder) => {
-//     builder.addCase(fetchArtist.pending, (state) => {
-//       state.loading = true
-//     })
-
-//     builder.addCase(
-//       fetchArtist.fulfilled,
-//       (state, action: PayloadAction<Artist>) => {
-//         state.loading = false
-//         state.artist = action.payload
-//         state.error = ''
-//       }
-//     )
-
-//     builder.addCase(fetchArtist.rejected, (state, action) => {
-//       state.loading = false
-//       state.artist = null
-//       state.error = action.error.message || 'Something went wrong'
-//     })
-//   },
+export default songSlice.reducer
