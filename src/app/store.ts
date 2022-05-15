@@ -1,11 +1,17 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import genresReducer from '../features/genresSlice'
 import genreReducer from '../features/genreSlice'
+import albumsReducer from '../features/albumsSlice'
+import albumReducer from '../features/albumSlice'
+import artistsReducer from '../features/artistsSlice'
 
 export const store = configureStore({
   reducer: {
     genres: genresReducer,
     genre: genreReducer,
+    albums: albumsReducer,
+    album: albumReducer,
+    artists: artistsReducer,
   },
 })
 

@@ -9,13 +9,13 @@ export interface Genre {
   updatedAt: Date
 }
 
-export interface GenreInitialState {
+export interface GenresInitialState {
   loading: boolean
   genres: Genre[]
   error: string
 }
 
-const initialState: GenreInitialState = {
+const initialState: GenresInitialState = {
   loading: false,
   genres: [],
   error: '',

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RootState } from '../app/store'
-import { fetchAlbum } from '../services/Album.services'
+import { fetchAlbums } from '../services/Album.services'
 
 export interface Artist {
   _id: string
@@ -29,44 +29,44 @@ export interface Album {
   updatedAt: Date
 }
 
-export interface AlbumInitialState {
+export interface AlbumsInitialState {
   loading: boolean
-  album: Album | null
+  albums: Album[]
   error: string
 }
 
-const initialState: AlbumInitialState = {
+const initialState: AlbumsInitialState = {
   loading: false,
-  album: null,
+  albums: [],
   error: '',
 }
 
-export const albumSlice = createSlice({
+export const albumsSlice = createSlice({
   name: 'albums',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchAlbum.pending, (state) => {
+    builder.addCase(fetchAlbums.pending, (state) => {
       state.loading = true
     })
 
     builder.addCase(
-      fetchAlbum.fulfilled,
-      (state, action: PayloadAction<Album>) => {
+      fetchAlbums.fulfilled,
+      (state, action: PayloadAction<Album[]>) => {
         state.loading = false
-        state.album = action.payload
+        state.albums = action.payload
         state.error = ''
       }
     )
 
-    builder.addCase(fetchAlbum.rejected, (state, action) => {
+    builder.addCase(fetchAlbums.rejected, (state, action) => {
       state.loading = false
-      state.album = null
+      state.albums = []
       state.error = action.error.message || 'Something went wrong'
     })
   },
 })
 
-export const selectAlbum = (state: RootState) => state.album
+export const selectAlbums = (state: RootState) => state.albums
 
-export default albumSlice.reducer
+export default albumsSlice.reducer
