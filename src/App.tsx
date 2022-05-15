@@ -30,9 +30,10 @@ import { ArtistDetail } from './views/Artists/ArtistDetail'
 import { Playlists } from './views/Playlists/Playlists'
 import { PlaylistDetail } from './views/Playlists/PlaylistsDetail'
 import { Cart } from './views/Cart/Cart'
-import { Footer } from './components/Footer/Footer'
 import { Search } from './views/Search/Search'
 import { AdminArtists } from './views/AdminDashboard/AdminArtists'
+import { SongsPlayer } from './components/AudioPlayer/AudioPlayer'
+// import { Footer } from './components/Footer/Footer'
 
 function App() {
   return (
@@ -73,7 +74,8 @@ function App() {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer />
+      <SongsPlayer />
+      {/* <Footer /> */}
     </>
   )
 }

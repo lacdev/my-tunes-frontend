@@ -18,8 +18,8 @@ export const fetchArtist = createAsyncThunk(
   async (artistId: string | undefined) => {
     const response = await axios.get(`${endpoints.artists}/${artistId}`)
 
-    console.log('response artist', response.data?.data)
-    return response.data?.data
+    console.log('response artist', response)
+    return response.data?.response
   }
 )
 

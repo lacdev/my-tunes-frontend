@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { string } from 'yup'
 import { RootState } from '../app/store'
 import { fetchAlbum } from '../services/Album.services'
 
@@ -18,6 +19,18 @@ export interface Genre {
   updatedAt: Date
 }
 
+export interface Song {
+  _id: string
+  title: string
+  artist: Artist
+  releaseDate: Date
+  album?: Album
+  genre: Genre
+  previewFile?: string
+  fullFile?: string
+  price?: number
+  trackNumber: number
+}
 export interface Album {
   _id: string
   title: string
@@ -25,6 +38,7 @@ export interface Album {
   image: string
   artist: Artist
   genre: Genre
+  songs: Song[]
   createdAt: Date
   updatedAt: Date
 }

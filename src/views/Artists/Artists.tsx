@@ -2,7 +2,7 @@ import { useNavigate, useLocation, NavLink } from 'react-router-dom'
 import Grid from '@mui/material/Grid'
 import { Box, Typography, Button, Paper } from '@mui/material'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
-import { artistsSlice, selectArtists } from '../../features/artistsSlice'
+import { selectArtists } from '../../features/artistsSlice'
 import { fetchArtists } from '../../services/Artist.service'
 import { useEffect } from 'react'
 

@@ -85,7 +85,7 @@ export const Navbar = () => {
         // background: 'white',
         background: 'rgba(255, 255, 255, 0.192)',
         // background:
-        //   'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);',
+        // 'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);',
         color: '#2A2A2A',
         // color: 'gray',
         backdropFilter: 'blur(20px)',
