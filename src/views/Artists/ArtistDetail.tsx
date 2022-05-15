@@ -2,6 +2,7 @@ import { useNavigate, useParams, useLocation, NavLink } from 'react-router-dom'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 import Grid from '@mui/material/Grid'
+import { CircularProgress } from '@mui/material'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
@@ -35,7 +36,11 @@ export const ArtistDetail = () => {
           minHeight: '90vh',
         }}
       >
-        {artist.loading && <div>Loading...</div>}
+        {artist.loading && (
+          <div>
+            <CircularProgress color="primary" />
+          </div>
+        )}
         {!artist.loading && artist.error ? (
           <div>Error: {artist.error}</div>
         ) : null}

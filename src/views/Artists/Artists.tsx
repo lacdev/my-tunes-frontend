@@ -1,6 +1,15 @@
 import { useNavigate, useLocation, NavLink } from 'react-router-dom'
 import Grid from '@mui/material/Grid'
-import { Box, Typography, Button, Paper } from '@mui/material'
+import {
+  Box,
+  Typography,
+  Button,
+  Paper,
+  Stack,
+  CircularProgress,
+  LinearProgress,
+} from '@mui/material'
+
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { selectArtists } from '../../features/artistsSlice'
 import { fetchArtists } from '../../services/Artist.service'
@@ -40,7 +49,11 @@ export const Artists = () => {
         </Typography>
       </Grid>
 
-      {artists.loading && <div>Loading...</div>}
+      {artists.loading && (
+        <div>
+          <CircularProgress color="primary" />
+        </div>
+      )}
       {!artists.loading && artists.error ? (
         <div>Error: {artists.error}</div>
       ) : null}
@@ -58,7 +71,12 @@ export const Artists = () => {
           {artists.artists?.map((artist) => (
             <Grid item xs={4} key={artist._id}>
               <NavLink to={`/artists/${artist._id}`}>
-                <img src={artist.image} height="200" width="200" />
+                <img
+                  src={artist.image}
+                  height="200"
+                  width="200"
+                  loading="lazy"
+                />
               </NavLink>
               <NavLink to={`/artists/${artist._id}`}>
                 <Typography variant="h5">{artist.name}</Typography>

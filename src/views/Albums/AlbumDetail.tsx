@@ -50,16 +50,17 @@ export const AlbumDetail = () => {
         component={Paper}
         elevation={3}
         container
+        item={true}
         maxWidth="xl"
         xs={12}
         direction="row"
         p={4}
         sx={{
           borderRadius: '16px',
-          minHeight: '100vh',
+          minHeight: '90vh',
         }}
       >
-        <Grid item xs={2}>
+        <Grid item={true} xs={2}>
           <Button
             variant="contained"
             onClick={() => navigate('/albums')}
@@ -87,23 +88,23 @@ export const AlbumDetail = () => {
 
         <Grid
           container
-          item
+          item={true}
           xs={10}
           sx={{
             height: '100%',
           }}
         >
           {album.loading && (
-            <div>
+            <Box>
               <CircularProgress color="primary" />
-            </div>
+            </Box>
           )}
           {!album.loading && album.error ? (
-            <div>Error: {album.error}</div>
+            <Box>Error: {album.error}</Box>
           ) : null}
           {!album.loading && album ? (
-            <Grid container item xs={12} gap={4}>
-              <Grid item xs={3}>
+            <Grid container item={true} xs={12} gap={3}>
+              <Grid item={true} xs={3}>
                 <img
                   src={album.album?.image}
                   height="256"
@@ -115,7 +116,7 @@ export const AlbumDetail = () => {
                 />
               </Grid>
 
-              <Grid item xs={8}>
+              <Grid item={true} xs={8}>
                 <Typography component="h2" variant="h2" fontWeight="bold">
                   {album.album?.title}
                 </Typography>
@@ -156,12 +157,18 @@ export const AlbumDetail = () => {
                 </Box>
               </Grid>
               <Grid container item xs={12}>
-                <TableContainer component={Paper} elevation={3}>
+                <TableContainer
+                  component={Paper}
+                  elevation={3}
+                  sx={{
+                    borderRadius: '8px',
+                  }}
+                >
                   <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                       <TableRow>
                         <TableCell align="left">
-                          <Typography>Title</Typography>
+                          <Typography ml={10}>Title</Typography>
                         </TableCell>
                         <TableCell align="right">
                           <Typography>Artists</Typography>

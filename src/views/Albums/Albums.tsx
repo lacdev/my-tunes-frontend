@@ -70,7 +70,12 @@ export const Albums = () => {
           {albums.albums.map((album) => (
             <Grid item xs={4} key={album._id}>
               <NavLink to={`/albums/${album._id}`}>
-                <img src={album.image} height="256" width="256" />
+                <img
+                  src={album.image}
+                  height="256"
+                  width="256"
+                  loading="lazy"
+                />
               </NavLink>
               <NavLink to={`/albums/${album._id}`}>
                 <Typography variant="h5">{album.title}</Typography>
