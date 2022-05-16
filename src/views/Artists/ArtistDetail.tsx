@@ -135,8 +135,68 @@ export const ArtistDetail = () => {
                   <Typography component="h3" variant="h3" fontWeight="bold">
                     Albums
                   </Typography>
-                  <Grid item xs={3} my={2}>
-                    {albumsByArtist.albums?.map((album) => (
+                  <Grid
+                    container
+                    alignItems="start"
+                    justifyContent="start"
+                    item={true}
+                    xs={11}
+                    minWidth="xl"
+                    mt={2}
+                    gap={8}
+                    sx={{
+                      background: 'white',
+                    }}
+                  >
+                    {albumsByArtist.albums.map((album) => (
+                      <Grid item xs={3} my={2}>
+                        <Box>
+                          <Box
+                            sx={{
+                              borderRadius: '16px',
+                              height: '100%',
+                              width: '100%',
+                            }}
+                          >
+                            <NavLink to={`/albums/${album._id}`}>
+                              <img
+                                src={album.image}
+                                width="100%"
+                                height="100%"
+                                style={{
+                                  borderRadius: '16px',
+                                }}
+                                alt="album"
+                              />
+                            </NavLink>
+                          </Box>
+
+                          <Box
+                            my={1}
+                            sx={{
+                              padding: '8px',
+                            }}
+                          >
+                            <NavLink
+                              to={`/albums/${album._id}`}
+                              style={{
+                                textDecoration: 'none',
+                                color: 'black',
+                                fontWeight: 'bold',
+                              }}
+                            >
+                              <Typography fontWeight="bold" variant="h5">
+                                {album.title}
+                              </Typography>
+                            </NavLink>
+                            <Typography variant="body1">
+                              {album.artist?.name}
+                            </Typography>
+                          </Box>
+                        </Box>
+                      </Grid>
+                    ))}
+                    {/* {albumsByArtist.albums?.map((album) => (
                       <Box>
                         <Box
                           sx={{
@@ -181,7 +241,7 @@ export const ArtistDetail = () => {
                           </Typography>
                         </Box>
                       </Box>
-                    ))}
+                    ))} */}
                   </Grid>
                   <Box my={4}>
                     <Typography component="h3" variant="h3" fontWeight="bold">

@@ -9,6 +9,8 @@ import {
   MenuItem,
   Link,
 } from '@mui/material'
+import { useNavigate, useLocation, NavLink, Navigate } from 'react-router-dom'
+
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import HomeIcon from '@mui/icons-material/Home'
 import GroupIcon from '@mui/icons-material/Group'
@@ -21,13 +23,23 @@ import LibraryMusicIcon from '@mui/icons-material/LibraryMusic'
 import QueueMusicIcon from '@mui/icons-material/QueueMusic'
 import AlbumIcon from '@mui/icons-material/Album'
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
 import { CSSProperties } from '@emotion/serialize'
+import { loginThunk, selectAuth } from '../../features/authSlice'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { userLogout } from '../../services/Auth.services'
 
 export const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const [active, setActive] = useState<boolean>(false)
   const open = Boolean(anchorEl)
+
+  const navigate = useNavigate()
+
+  const auth = useAppSelector(selectAuth)
+
+  console.log('auth from login', auth)
+
+  const dispatch = useAppDispatch()
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)
@@ -47,32 +59,6 @@ export const Navbar = () => {
     textDecoration: 'none',
     color: 'black',
   }
-
-  // let activeClassName = 'underline'
-
-  // const navLinkStyles = ({ isActive: any }) => {
-  //   return {
-  //     fontWeight: isActive ? 'bold' : 'normal',
-  //     textDecoration: isActive ? 'none' : 'underline',
-  //   }
-  // }
-
-  //  style={navLinkStyles}
-
-  // const navLinkStyles = ({ isActive: any }) => {
-  //   return {
-  //     fontWeight: isActive ? 'bold' : 'normal',
-  //     textDecoration: isActive ? 'none' : 'underline',
-  //   }
-  // }
-
-  /*
-  
-  style={({ isActive }) =>
-              isActive ? activeStyle : undefined
-            }
-  
-  */
 
   return (
     <AppBar
@@ -205,36 +191,78 @@ export const Navbar = () => {
           </NavLink>
         </Stack>
         <Stack>
-          <NavLink
-            to="login"
-            style={({ isActive }) => (isActive ? activeStyle : notActiveStyle)}
-          >
-            <Button
-              sx={{
-                backgroundImage:
-                  'linear-gradient(to right, #00c6ff 0%, #0072ff  51%, #00c6ff  100%)',
-                // margin: '10px',
-                padding: '8px 32px',
-                textAlign: 'center',
-                // textTransform: 'lowercase',
-                transition: '0.5s',
-                backgroundSize: '200% auto',
-                color: 'white',
-                boxShadow: '0 0 20px #eee',
-                borderRadius: '16px',
-                // display: 'block',
-                '&:hover': {
-                  backgroundPosition: 'right center',
-                  color: '#fff',
-                  textDecoration: 'none',
-                },
-              }}
+          {auth.isLoggedIn ? (
+            <NavLink
+              to="/"
+              style={({ isActive }) =>
+                isActive ? activeStyle : notActiveStyle
+              }
             >
-              Sign In
-            </Button>
-          </NavLink>
+              <Button
+                onClick={() => userLogout()}
+                sx={{
+                  backgroundImage:
+                    'linear-gradient(to right, #00c6ff 0%, #0072ff  51%, #00c6ff  100%)',
+                  // margin: '10px',
+                  padding: '8px 32px',
+                  textAlign: 'center',
+                  // textTransform: 'lowercase',
+                  transition: '0.5s',
+                  backgroundSize: '200% auto',
+                  color: 'white',
+                  boxShadow: '0 0 20px #eee',
+                  borderRadius: '16px',
+                  // display: 'block',
+                  '&:hover': {
+                    backgroundPosition: 'right center',
+                    color: '#fff',
+                    textDecoration: 'none',
+                  },
+                }}
+              >
+                Logout
+              </Button>
+            </NavLink>
+          ) : (
+            <NavLink
+              to="login"
+              style={({ isActive }) =>
+                isActive ? activeStyle : notActiveStyle
+              }
+            >
+              <Button
+                sx={{
+                  backgroundImage:
+                    'linear-gradient(to right, #00c6ff 0%, #0072ff  51%, #00c6ff  100%)',
+                  // margin: '10px',
+                  padding: '8px 32px',
+                  textAlign: 'center',
+                  // textTransform: 'lowercase',
+                  transition: '0.5s',
+                  backgroundSize: '200% auto',
+                  color: 'white',
+                  boxShadow: '0 0 20px #eee',
+                  borderRadius: '16px',
+                  // display: 'block',
+                  '&:hover': {
+                    backgroundPosition: 'right center',
+                    color: '#fff',
+                    textDecoration: 'none',
+                  },
+                }}
+              >
+                Login
+              </Button>
+            </NavLink>
+          )}
         </Stack>
-        {/* <Button
+      </Toolbar>
+    </AppBar>
+  )
+}
+
+{
+  /* <Button
             color="inherit"
             id="resources-button"
             sx={{
@@ -278,10 +306,7 @@ export const Navbar = () => {
         >
           <MenuItem onClick={handleClose}>Dashboard</MenuItem>
           <MenuItem onClick={handleClose}>Logout</MenuItem>
-        </Menu> */}
-      </Toolbar>
-    </AppBar>
-  )
+        </Menu> */
 }
 
 // import { NavLink } from 'react-router-dom'

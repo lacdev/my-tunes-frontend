@@ -1,7 +1,7 @@
-// import { useState } from 'react'
 // import { useAuth } from '../utils/auth'
-import { useNavigate, useLocation, NavLink } from 'react-router-dom'
-
+import { useState, useEffect, useContext } from 'react'
+import { useNavigate, useLocation, NavLink, Navigate } from 'react-router-dom'
+import AuthContext from '../../context/AuthProvider'
 import * as React from 'react'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
@@ -9,9 +9,10 @@ import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
-import { useState, useEffect } from 'react'
 import { ChangeEvent } from 'react'
 import { userRegister, userSignIn } from '../../services/Auth.services'
+import { loginThunk, selectAuth } from '../../features/authSlice'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
 
 export interface Login {
   email: string
@@ -23,6 +24,16 @@ export const Login = () => {
     email: '',
     password: '',
   })
+
+  const navigate = useNavigate()
+
+  const auth = useAppSelector(selectAuth)
+
+  console.log('auth from login', auth)
+
+  const dispatch = useAppDispatch()
+
+  // const { setAuth } = React.useContext(AuthContext)
   console.log(form)
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [event.target.name]: event.target.value })
@@ -32,11 +43,9 @@ export const Login = () => {
     event.preventDefault()
     const response = await userSignIn(form)
     console.log('form component response', response)
-    // const , data = new FormData(event.currentTarget)
-    // console.log({
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    // })
+  }
+  if (auth.user) {
+    navigate('/user', { replace: true })
   }
 
   return (
@@ -60,6 +69,11 @@ export const Login = () => {
           <TextField
             margin="normal"
             required
+            error={!form.email}
+            value={form.email}
+            helperText={
+              !form.email ? 'Email is required' : 'Please type your email'
+            }
             fullWidth
             id="email"
             label="Email Address"
@@ -72,6 +86,13 @@ export const Login = () => {
             margin="normal"
             required
             fullWidth
+            error={!form.password}
+            value={form.password}
+            helperText={
+              !form.password
+                ? 'Password is required'
+                : 'Do not share your password'
+            }
             name="password"
             label="Password"
             type="password"

@@ -26,16 +26,17 @@ export const SongsPlayer = () => {
             backgroundSize: '200% auto',
             color: 'black',
             boxShadow: '0 0 20px #eee',
-            minWidth: '1250px',
+            minWidth: '960px',
             margin: '8px',
             fontWeight: '600',
+            padding: '16px 24px',
             // maxWidth: '1536px',
           }}
           autoPlay
           header={`${song.song?.artist?.name} - ${song.song?.title}`}
           layout="horizontal"
           src={song.song?.previewFile}
-          onPlay={() => console.log('onPlay')}
+          // onPlay={() => console.log('onPlay')}
           // other props here
         />
       )}

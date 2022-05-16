@@ -111,7 +111,7 @@ export const GenreDetail = () => {
           {!genre.loading && genre.error ? (
             <Box>Error: {genre.error}</Box>
           ) : null}
-          {!genre.loading && genre.genre && albumsByGenre.albums ? (
+          {!genre.loading && genre.genre && albumsByGenre ? (
             <Grid container item={true} xs={12} direction="row">
               <Grid item xs={12}>
                 <Typography

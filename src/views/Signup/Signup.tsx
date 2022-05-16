@@ -60,6 +60,13 @@ export const Signup = () => {
             onChange={handleChange}
             margin="normal"
             required
+            error={!form.username}
+            value={form.username}
+            helperText={
+              !form.username
+                ? 'Username is required'
+                : 'Please type your username'
+            }
             fullWidth
             id="username"
             label="Username"
@@ -71,6 +78,11 @@ export const Signup = () => {
             onChange={handleChange}
             margin="normal"
             required
+            error={!form.email}
+            value={form.email}
+            helperText={
+              !form.email ? 'Email is required' : 'Please type your email'
+            }
             fullWidth
             id="email"
             label="Email Address"
@@ -82,6 +94,13 @@ export const Signup = () => {
             onChange={handleChange}
             margin="normal"
             required
+            error={!form.password}
+            value={form.password}
+            helperText={
+              !form.password
+                ? 'Password is required'
+                : 'Do not share your password'
+            }
             fullWidth
             name="password"
             label="Password"
@@ -100,10 +119,7 @@ export const Signup = () => {
               fontSize: '16px',
               backgroundImage:
                 'linear-gradient(to right, #00c6ff 0%, #0072ff  51%, #00c6ff  100%)',
-              // margin: '10px',
-              // padding: '8px 32px',
               textAlign: 'center',
-              // textTransform: 'lowercase',
               transition: '0.5s',
               backgroundSize: '200% auto',
               color: 'white',
