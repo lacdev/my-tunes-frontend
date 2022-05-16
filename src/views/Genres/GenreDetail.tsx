@@ -9,20 +9,25 @@ import Container from '@mui/material/Container'
 import { CircularProgress, Paper } from '@mui/material'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { selectGenre } from '../../features/genreSlice'
-import { fetchGenre } from '../../services/Genre.services'
+import { fetchAlbumsByGenre, fetchGenre } from '../../services/Genre.services'
 import formatGenre from '../../utils/formatGenre'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
+import { selectAlbumsByGenre } from '../../features/albumsByGenreSlice'
 
 export const GenreDetail = () => {
   const navigate = useNavigate()
   const { genreId } = useParams()
 
   const genre = useAppSelector(selectGenre)
+  const albumsByGenre = useAppSelector(selectAlbumsByGenre)
+
+  console.log('genre?', genre)
 
   const dispatch = useAppDispatch()
 
   useEffect(() => {
     dispatch(fetchGenre(genreId))
+    dispatch(fetchAlbumsByGenre(genreId))
   }, [])
 
   return (
@@ -72,6 +77,7 @@ export const GenreDetail = () => {
         <Grid
           container
           item={true}
+          direction="row"
           xs={10}
           sx={{
             height: '100%',
@@ -85,8 +91,8 @@ export const GenreDetail = () => {
           {!genre.loading && genre.error ? (
             <Box>Error: {genre.error}</Box>
           ) : null}
-          {!genre.loading && genre ? (
-            <Grid container item={true} xs={12} gap={3}>
+          {!genre.loading && genre.genre && albumsByGenre ? (
+            <Grid container item={true} xs={12} direction="row">
               <Grid item xs={12}>
                 <Typography
                   component="h2"
@@ -100,26 +106,76 @@ export const GenreDetail = () => {
 
               {/* Albums and songs by genre starts here  */}
 
-              <Grid container item xs={12}>
-                <Grid item xs={12} my={4}>
-                  <Typography component="h3" variant="h3" fontWeight="bold">
-                    Albums
-                  </Typography>
-                </Grid>
+              <Grid item xs={12} my={4}>
+                <Typography component="h3" variant="h3" fontWeight="bold">
+                  Albums
+                </Typography>
+              </Grid>
 
-                <Grid container item xs={12}>
-                  {/* Albums by Genre */}
-                </Grid>
+              <Grid
+                container
+                alignItems="start"
+                justifyContent="start"
+                item={true}
+                xs={11}
+                minWidth="xl"
+                mt={2}
+                mb={30}
+                gap={8}
+                sx={{
+                  background: 'white',
+                }}
+              >
+                {/* Albums by Genre */}
 
-                <Grid item xs={12} my={4}>
-                  <Typography component="h3" variant="h3" fontWeight="bold">
-                    Songs
-                  </Typography>
-                </Grid>
+                {albumsByGenre.albums.map((album) => (
+                  <Grid item xs={3} my={2}>
+                    <Box>
+                      <Box
+                        sx={{
+                          borderRadius: '16px',
+                          height: '100%',
+                          width: '100%',
+                        }}
+                      >
+                        <NavLink to={`/albums/${album._id}`}>
+                          <img
+                            src={album.image}
+                            width="100%"
+                            height="100%"
+                            style={{
+                              borderRadius: '16px',
+                            }}
+                            alt="album"
+                          />
+                        </NavLink>
+                      </Box>
 
-                <Grid container item xs={12}>
-                  {/* Songs By Genre */}
-                </Grid>
+                      <Box
+                        my={1}
+                        sx={{
+                          padding: '8px',
+                        }}
+                      >
+                        <NavLink
+                          to={`/albums/${album._id}`}
+                          style={{
+                            textDecoration: 'none',
+                            color: 'black',
+                            fontWeight: 'bold',
+                          }}
+                        >
+                          <Typography fontWeight="bold" variant="h5">
+                            {album.title}
+                          </Typography>
+                        </NavLink>
+                        <Typography variant="body1">
+                          {album.artist?.name}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Grid>
+                ))}
               </Grid>
             </Grid>
           ) : null}
@@ -130,3 +186,13 @@ export const GenreDetail = () => {
 }
 
 // {replace: true} to replace the history in the stack
+
+//  {/* <Grid item xs={12} my={4}>
+//                 <Typography component="h3" variant="h3" fontWeight="bold">
+//                   Songs
+//                 </Typography>
+//               </Grid> */}
+
+//               {/* <Grid container item xs={12}>
+//                 {/* Songs By Genre */}
+//               </Grid> */}
