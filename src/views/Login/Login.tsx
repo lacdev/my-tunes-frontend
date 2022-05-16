@@ -9,15 +9,34 @@ import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
+import { useState, useEffect } from 'react'
+import { ChangeEvent } from 'react'
+import { userRegister, userSignIn } from '../../services/Auth.services'
+
+export interface Login {
+  email: string
+  password: string
+}
 
 export const Login = () => {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const [form, setForm] = useState<Login>({
+    email: '',
+    password: '',
+  })
+  console.log(form)
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [event.target.name]: event.target.value })
+  }
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const data = new FormData(event.currentTarget)
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    })
+    const response = await userSignIn(form)
+    console.log('form component response', response)
+    // const , data = new FormData(event.currentTarget)
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // })
   }
 
   return (
@@ -47,6 +66,7 @@ export const Login = () => {
             name="email"
             autoComplete="email"
             autoFocus
+            onChange={handleChange}
           />
           <TextField
             margin="normal"
@@ -57,6 +77,7 @@ export const Login = () => {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={handleChange}
           />
           <Button
             type="submit"

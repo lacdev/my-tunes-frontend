@@ -45,11 +45,9 @@ export const GenreDetail = () => {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    Promise.all([
-      dispatch(fetchGenre(genreId)),
-      dispatch(fetchAlbumsByGenre(genreId)),
-      dispatch(fetchSongsByGenre(genreId)),
-    ])
+    dispatch(fetchGenre(genreId))
+    dispatch(fetchAlbumsByGenre(genreId))
+    dispatch(fetchSongsByGenre(genreId))
   }, [])
 
   return (

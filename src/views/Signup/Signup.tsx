@@ -9,16 +9,33 @@ import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import Container from '@mui/material/Container'
+import { useState, useEffect } from 'react'
+import { ChangeEvent } from 'react'
+import { userRegister, userSignIn } from '../../services/Auth.services'
+
+export interface Register {
+  username: string
+  email: string
+  password: string
+}
 
 export const Signup = () => {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const [form, setForm] = useState<Register>({
+    username: '',
+    email: '',
+    password: '',
+  })
+
+  console.log(form)
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [event.target.name]: event.target.value })
+  }
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const data = new FormData(event.currentTarget)
-    console.log({
-      email: data.get('email'),
-      username: data.get('username'),
-      password: data.get('password'),
-    })
+    const response = await userRegister(form)
+    console.log('form component response', response)
   }
 
   return (
@@ -40,6 +57,7 @@ export const Signup = () => {
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
+            onChange={handleChange}
             margin="normal"
             required
             fullWidth
@@ -50,6 +68,7 @@ export const Signup = () => {
             autoFocus
           />
           <TextField
+            onChange={handleChange}
             margin="normal"
             required
             fullWidth
@@ -60,6 +79,7 @@ export const Signup = () => {
             autoFocus
           />
           <TextField
+            onChange={handleChange}
             margin="normal"
             required
             fullWidth
