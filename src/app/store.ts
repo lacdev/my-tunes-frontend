@@ -10,6 +10,7 @@ import songReducer from '../features/songSlice'
 import albumsByArtistReducer from '../features/albumsArtistSlice'
 import songsByArtistReducer from '../features/songsByArtistSlice'
 import albumsByGenreReducer from '../features/albumsByGenreSlice'
+import songsByGenreReducer from '../features/songsByGenreSlice'
 
 export const store = configureStore({
   reducer: {
@@ -24,6 +25,7 @@ export const store = configureStore({
     song: songReducer,
     songsByArtist: songsByArtistReducer,
     albumsByGenre: albumsByGenreReducer,
+    songsByGenre: songsByGenreReducer,
   },
 })
 

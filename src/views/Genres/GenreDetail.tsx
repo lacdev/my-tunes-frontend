@@ -9,10 +9,28 @@ import Container from '@mui/material/Container'
 import { CircularProgress, Paper } from '@mui/material'
 import { useAppSelector, useAppDispatch } from '../../app/hooks'
 import { selectGenre } from '../../features/genreSlice'
-import { fetchAlbumsByGenre, fetchGenre } from '../../services/Genre.services'
+import {
+  fetchAlbumsByGenre,
+  fetchGenre,
+  fetchSongsByGenre,
+} from '../../services/Genre.services'
 import formatGenre from '../../utils/formatGenre'
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import { selectAlbumsByGenre } from '../../features/albumsByGenreSlice'
+import { selectSongsByGenre } from '../../features/songsByGenreSlice'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag'
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'
+
+import { fetchSong } from '../../services/Song.services'
+
+// -------------
+
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
 
 export const GenreDetail = () => {
   const navigate = useNavigate()
@@ -20,14 +38,18 @@ export const GenreDetail = () => {
 
   const genre = useAppSelector(selectGenre)
   const albumsByGenre = useAppSelector(selectAlbumsByGenre)
+  const songsByGenre = useAppSelector(selectSongsByGenre)
 
   console.log('genre?', genre)
 
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(fetchGenre(genreId))
-    dispatch(fetchAlbumsByGenre(genreId))
+    Promise.all([
+      dispatch(fetchGenre(genreId)),
+      dispatch(fetchAlbumsByGenre(genreId)),
+      dispatch(fetchSongsByGenre(genreId)),
+    ])
   }, [])
 
   return (
@@ -91,7 +113,7 @@ export const GenreDetail = () => {
           {!genre.loading && genre.error ? (
             <Box>Error: {genre.error}</Box>
           ) : null}
-          {!genre.loading && genre.genre && albumsByGenre ? (
+          {!genre.loading && genre.genre && albumsByGenre.albums ? (
             <Grid container item={true} xs={12} direction="row">
               <Grid item xs={12}>
                 <Typography
@@ -176,6 +198,120 @@ export const GenreDetail = () => {
                     </Box>
                   </Grid>
                 ))}
+
+                <Grid item xs={12} my={4}>
+                  <Typography component="h3" variant="h3" fontWeight="bold">
+                    Songs
+                  </Typography>
+                </Grid>
+
+                {/* Songs by genre */}
+
+                <Grid container item xs={12} mb={30}>
+                  <TableContainer
+                    component={Paper}
+                    elevation={3}
+                    sx={{
+                      borderRadius: '8px',
+                    }}
+                  >
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                      <TableHead>
+                        <TableRow>
+                          <TableCell align="left">
+                            <Typography ml={10}>Title</Typography>
+                          </TableCell>
+                          <TableCell align="right">
+                            <Typography>Artists</Typography>
+                          </TableCell>
+                          <TableCell align="right">
+                            <Typography>Genres</Typography>
+                          </TableCell>
+                          <TableCell align="right">
+                            <Typography>Price</Typography>
+                          </TableCell>
+                          <TableCell align="right">
+                            <Typography> </Typography>
+                          </TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {songsByGenre.songs.map((song) => (
+                          <TableRow
+                            key={song._id}
+                            sx={{
+                              '&:last-child td, &:last-child th': {
+                                border: 0,
+                              },
+                            }}
+                          >
+                            <TableCell component="th" scope="row">
+                              <Box
+                                sx={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'flex-start',
+                                }}
+                              >
+                                <Button
+                                  size="large"
+                                  onClick={() => dispatch(fetchSong(song._id))}
+                                  sx={{
+                                    background: 'white',
+                                    color: 'black',
+                                    padding: '8px 8px',
+                                    marginRight: '16px',
+                                  }}
+                                  startIcon={<PlayArrowIcon />}
+                                ></Button>
+
+                                <Typography variant="h6">
+                                  {song.title}
+                                </Typography>
+                              </Box>
+                            </TableCell>
+                            <TableCell align="right">
+                              <Typography variant="h6">
+                                {song.artist?.name}
+                              </Typography>
+                            </TableCell>
+                            <TableCell align="right">
+                              <Typography variant="h6">
+                                {formatGenre(song.genre?.name)}
+                              </Typography>
+                            </TableCell>
+                            <TableCell align="right">
+                              <Typography variant="h6">{song.price}</Typography>
+                            </TableCell>
+                            <TableCell align="right">
+                              <Button
+                                sx={{
+                                  backgroundImage:
+                                    'linear-gradient(to right, #02AAB0 0%, #24BEAC  51%, #02AAB0  100%)',
+                                  padding: '8px 16px',
+                                  textAlign: 'center',
+                                  transition: '0.5s',
+                                  color: 'white',
+                                  borderRadius: '8px',
+                                  backgroundSize: '200% auto',
+                                  boxShadow: '0 0 20px #eee',
+                                  '&:hover': {
+                                    backgroundPosition: 'right center',
+                                    color: '#fff',
+                                    textDecoration: 'none',
+                                  },
+                                }}
+                                startIcon={<ShoppingBagIcon />}
+                              >
+                                Add To Cart
+                              </Button>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </Grid>
               </Grid>
             </Grid>
           ) : null}
@@ -186,13 +322,3 @@ export const GenreDetail = () => {
 }
 
 // {replace: true} to replace the history in the stack
-
-//  {/* <Grid item xs={12} my={4}>
-//                 <Typography component="h3" variant="h3" fontWeight="bold">
-//                   Songs
-//                 </Typography>
-//               </Grid> */}
-
-//               {/* <Grid container item xs={12}>
-//                 {/* Songs By Genre */}
-//               </Grid> */}

@@ -102,7 +102,7 @@ export const AlbumDetail = () => {
           {!album.loading && album.error ? (
             <Box>Error: {album.error}</Box>
           ) : null}
-          {!album.loading && album ? (
+          {!album.loading && album.album ? (
             <Grid container item={true} xs={12} gap={3}>
               <Grid item={true} xs={3}>
                 <img
