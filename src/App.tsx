@@ -30,7 +30,10 @@ import { ArtistDetail } from './views/Artists/ArtistDetail'
 import { Playlists } from './views/Playlists/Playlists'
 import { PlaylistDetail } from './views/Playlists/PlaylistsDetail'
 import { Cart } from './views/Cart/Cart'
-import { Footer } from './components/Footer/Footer'
+import { Search } from './views/Search/Search'
+import { AdminArtists } from './views/AdminDashboard/AdminArtists'
+import { SongsPlayer } from './components/AudioPlayer/AudioPlayer'
+// import { Footer } from './components/Footer/Footer'
 
 function App() {
   return (
@@ -38,6 +41,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="search" element={<Search />} />
         <Route path="artists" element={<Artists />} />
         <Route path="artists/:artistId" element={<ArtistDetail />} />
         <Route path="genres" element={<Genres />} />
@@ -60,6 +64,7 @@ function App() {
         </Route>
         <Route path="admin" element={<Admin />}>
           <Route index element={<AdminDashboard />} />
+          <Route path="artists" element={<AdminArtists />} />
           <Route path="orders" element={<AdminOrders />} />
           <Route path="genres" element={<AdminGenres />} />
           <Route path="users" element={<AdminUsers />} />
@@ -69,7 +74,8 @@ function App() {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer />
+      <SongsPlayer />
+      {/* <Footer /> */}
     </>
   )
 }

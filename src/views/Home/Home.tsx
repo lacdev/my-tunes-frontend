@@ -1,5 +1,9 @@
 import { useNavigate } from 'react-router-dom'
-import { Box, Grid, Paper } from '@mui/material'
+import { Box, Grid, Paper, Typography } from '@mui/material'
+import banner1 from '../../assets/HomePage/best-dj-releases.png'
+import banner2 from '../../assets/HomePage/best-of-house-2022-banner.png'
+import banner3 from '../../assets/HomePage/this-month-best-vinyl.png'
+import banner4 from '../../assets/HomePage/weekly-techno-releases.png'
 
 export const Home = () => {
   const navigate = useNavigate()
@@ -7,18 +11,27 @@ export const Home = () => {
   // {replace: true} to replace the history in the stack
   return (
     // Main Grid
-    <Grid container my={2}>
+    <Grid container my={2} alignItems="center" justifyContent="center">
       <Grid
         item
-        xs={8}
+        xs={11}
         sx={{
-          height: '600px',
-          background: 'gray',
+          minHeight: 'fit-content',
+          background: 'transparent',
         }}
       >
-        <h2>Featured Playlist</h2>
+        <Box
+          component="img"
+          sx={{
+            borderRadius: '16px',
+            width: '100%',
+            height: 'auto',
+          }}
+          src={banner2}
+          alt="featured playlist"
+        ></Box>
       </Grid>
-      <Grid
+      {/* <Grid
         container
         item
         xs={4}
@@ -57,7 +70,7 @@ export const Home = () => {
         >
           <h2>Featured Playlist 4</h2>
         </Grid>
-      </Grid>
+      </Grid> */}
       <Grid
         my={2}
         item
@@ -68,12 +81,19 @@ export const Home = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          borderRadius: '16px',
         }}
       >
-        <h3>
-          Fans have paid artists $924 million using MyTunes, and $198 million in
-          the last year.
-        </h3>
+        <Box
+          sx={{
+            borderRadius: '16px',
+          }}
+        >
+          <Typography variant="h5" fontWeight="bold">
+            Fans have paid artists $924 million using MyTunes, and $198 million
+            in the last year.
+          </Typography>
+        </Box>
       </Grid>
 
       {/* Weeks albums and top 10 */}
@@ -82,24 +102,33 @@ export const Home = () => {
         container
         xs={12}
         sx={{
-          height: '1000px',
+          height: 'fit-content',
         }}
       >
         <Grid container item xs={8}>
           <Grid
             item
-            xs={12}
+            xs={11}
             sx={{
-              height: 'auto',
-              background: 'gray',
+              height: 'fit-content',
+              background: 'transparent',
             }}
           >
-            <h2>This week's best release ever</h2>
+            <Box
+              component="img"
+              sx={{
+                borderRadius: '16px',
+                width: '100%',
+                height: 'auto',
+              }}
+              src={banner1}
+              alt="featured playlist"
+            ></Box>
           </Grid>
           <Grid
             container
             item
-            xs={12}
+            xs={11}
             sx={{
               height: 'auto',
               background: 'yellow',
@@ -180,19 +209,26 @@ export const Home = () => {
       </Grid>
 
       {/* Featured Pre Orders Releases */}
+
       <Grid
-        item
         mt={2}
-        xs={12}
+        item
+        xs={11}
         sx={{
-          height: '400px',
-          background: 'orange',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
+          minHeight: 'fit-content',
+          background: 'transparent',
         }}
       >
-        <h3>Featured Pre Orders</h3>
+        <Box
+          component="img"
+          sx={{
+            borderRadius: '16px',
+            width: '100%',
+            height: 'auto',
+          }}
+          src={banner3}
+          alt="featured playlist"
+        ></Box>
       </Grid>
 
       {/* Top releases grid */}
@@ -221,74 +257,7 @@ export const Home = () => {
           }}
         >
           <Grid item xs={12}>
-            <h2>Acid Top Releases</h2>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-            sx={{
-              height: '250px',
-              background: 'blue',
-            }}
-          >
-            <h2>Top Techno Release Item</h2>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-            sx={{
-              height: '250px',
-              background: 'purple',
-            }}
-          >
-            <h2>Top Techno Release Item</h2>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-            sx={{
-              height: '250px',
-              background: 'green',
-            }}
-          >
-            <h2>Top Techno Release Item</h2>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-            sx={{
-              height: '250px',
-              background: 'gray',
-            }}
-          >
-            <h2>Top Techno Release Item</h2>
-          </Grid>
-          <Grid
-            item
-            xs={2}
-            sx={{
-              height: '250px',
-              background: 'orange',
-            }}
-          >
-            <h2>Top Techno Release Item</h2>
-          </Grid>
-        </Grid>
-        <Grid
-          item
-          container
-          alignItems="center"
-          justifyContent="center"
-          columnGap={4}
-          xs={12}
-          my={2}
-          sx={{
-            height: 'auto',
-            background: 'pink',
-          }}
-        >
-          <Grid item xs={12}>
-            <h2>Alternative Top Releases</h2>
+            <h2>Electro Top Releases</h2>
           </Grid>
           <Grid
             item
@@ -356,6 +325,73 @@ export const Home = () => {
         >
           <Grid item xs={12}>
             <h2>House Top Releases</h2>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={{
+              height: '250px',
+              background: 'blue',
+            }}
+          >
+            <h2>Top Techno Release Item</h2>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={{
+              height: '250px',
+              background: 'purple',
+            }}
+          >
+            <h2>Top Techno Release Item</h2>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={{
+              height: '250px',
+              background: 'green',
+            }}
+          >
+            <h2>Top Techno Release Item</h2>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={{
+              height: '250px',
+              background: 'gray',
+            }}
+          >
+            <h2>Top Techno Release Item</h2>
+          </Grid>
+          <Grid
+            item
+            xs={2}
+            sx={{
+              height: '250px',
+              background: 'orange',
+            }}
+          >
+            <h2>Top Techno Release Item</h2>
+          </Grid>
+        </Grid>
+        <Grid
+          item
+          container
+          alignItems="center"
+          justifyContent="center"
+          columnGap={4}
+          xs={12}
+          my={2}
+          sx={{
+            height: 'auto',
+            background: 'pink',
+          }}
+        >
+          <Grid item xs={12}>
+            <h2>Techno Top Releases</h2>
           </Grid>
           <Grid
             item

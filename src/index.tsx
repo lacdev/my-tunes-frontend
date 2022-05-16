@@ -7,16 +7,16 @@ import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material'
 import { theme } from './theme/MuiTheme'
-
+import { AuthProvider } from './context/AuthProvider'
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <ThemeProvider theme={theme}>
-      <Provider store={store}>
+      <AuthProvider>
         <BrowserRouter>
           <App />
         </BrowserRouter>
-      </Provider>
+      </AuthProvider>
     </ThemeProvider>
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 )
