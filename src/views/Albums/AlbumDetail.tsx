@@ -57,13 +57,13 @@ export const AlbumDetail = () => {
         p={4}
         sx={{
           borderRadius: '16px',
-          minHeight: '90vh',
+          minHeight: '100vh',
         }}
       >
         <Grid item={true} xs={2}>
           <Button
             variant="contained"
-            onClick={() => navigate('/albums')}
+            onClick={() => navigate(-1)}
             startIcon={<ArrowBackIosNewIcon />}
             sx={{
               backgroundImage:

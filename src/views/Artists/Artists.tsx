@@ -29,62 +29,136 @@ export const Artists = () => {
   // {replace: true} to replace the history in the stack
   return (
     <Grid
-      container
-      gap={4}
+      mt={2}
+      mb={30}
       component={Paper}
+      elevation={3}
+      container
+      item={true}
       maxWidth="xl"
-      my={2}
+      xs={12}
+      direction="row"
+      p={4}
+      sx={{
+        borderRadius: '16px',
+        minHeight: '100vh',
+      }}
       alignItems="center"
       justifyContent="center"
-      sx={{
-        justifyContent: 'space-around',
-        alignItems: 'space-around',
-        alignContent: 'center',
-        padding: '24px',
-      }}
     >
-      <Grid item={true} xs={12} alignSelf="center">
-        <Typography component="h2" variant="h3">
-          Albums Page
-        </Typography>
-      </Grid>
+      {/* <Grid container item={true} xs={12}>
+        <Grid item xs={12}>
+          <Typography
+            ml={4}
+            my={4}
+            component="h2"
+            variant="h3"
+            fontWeight="bold"
+          >
+            Artists
+          </Typography>
+        </Grid>
+      </Grid> */}
 
       {artists.loading && (
-        <div>
-          <CircularProgress color="primary" />
-        </div>
-      )}
-      {!artists.loading && artists.error ? (
-        <div>Error: {artists.error}</div>
-      ) : null}
-      {!artists.loading && artists ? (
         <Grid
-          container
-          item={true}
+          item
           xs={12}
+          alignSelf="center"
           sx={{
+            display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            minHeight: '90vh',
           }}
         >
-          {artists.artists?.map((artist) => (
-            <Grid item xs={4} key={artist._id}>
-              <NavLink to={`/artists/${artist._id}`}>
-                <img
-                  src={artist.image}
-                  height="200"
-                  width="200"
-                  loading="lazy"
-                />
-              </NavLink>
-              <NavLink to={`/artists/${artist._id}`}>
-                <Typography variant="h5">{artist.name}</Typography>
-              </NavLink>
-              <Typography variant="h6">{artist.country}</Typography>
-            </Grid>
-          ))}
+          <CircularProgress color="primary" />
         </Grid>
+      )}
+      {!artists.loading && artists.error ? (
+        <Box>Error: {artists.error}</Box>
+      ) : null}
+      {!artists.loading && artists ? (
+        <>
+          <Grid container item={true} xs={12}>
+            <Grid item xs={12}>
+              <Typography
+                ml={4}
+                my={4}
+                component="h2"
+                variant="h3"
+                fontWeight="bold"
+              >
+                Artists
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            alignItems="start"
+            justifyContent="space-around"
+            item={true}
+            xs={12}
+            minWidth="xl"
+            mt={2}
+            gap={1}
+            sx={{
+              background: 'white',
+            }}
+          >
+            {artists.artists?.map((artist) => (
+              <Grid
+                component={Paper}
+                // item
+                xs={3}
+                key={artist._id}
+                // m={2}
+                // sx={{
+                //   // padding: '16px',
+                //   borderRadius: '16px',
+                //   // height: '100px',
+                //   // width: '100px',
+                // }}
+                item={true}
+                // xs={3}
+                my={2}
+              >
+                <NavLink to={`/artists/${artist._id}`}>
+                  <Box>
+                    <img
+                      src={artist.image}
+                      height="100%"
+                      width="100%"
+                      style={{
+                        borderRadius: '16px 16px 0 0',
+                      }}
+                      loading="lazy"
+                      alt="artist"
+                    />
+                  </Box>
+                </NavLink>
+                <Box
+                  sx={{
+                    padding: '12px',
+                  }}
+                >
+                  <NavLink
+                    to={`/artists/${artist._id}`}
+                    style={{
+                      textDecoration: 'none',
+                      color: 'black',
+                      fontWeight: 'bold',
+                    }}
+                  >
+                    <Typography variant="h6" fontWeight="bold">
+                      {artist.name}
+                    </Typography>
+                  </NavLink>
+                  <Typography variant="body1">{artist.country}</Typography>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </>
       ) : null}
     </Grid>
   )

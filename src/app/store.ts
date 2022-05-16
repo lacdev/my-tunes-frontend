@@ -7,6 +7,8 @@ import artistsReducer from '../features/artistsSlice'
 import artistReducer from '../features/artistSlice'
 import playerReducer from '../features/playerSlice'
 import songReducer from '../features/songSlice'
+import albumsByArtistReducer from '../features/albumsArtistSlice'
+import songsByArtistReducer from '../features/songsByArtistSlice'
 
 export const store = configureStore({
   reducer: {
@@ -14,10 +16,13 @@ export const store = configureStore({
     genre: genreReducer,
     albums: albumsReducer,
     album: albumReducer,
+    albumsByArtist: albumsByArtistReducer,
     artists: artistsReducer,
     artist: artistReducer,
     player: playerReducer,
     song: songReducer,
+    songsByArtist: songsByArtistReducer,
+    // songs: songsReducer
   },
 })
 
